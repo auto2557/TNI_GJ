@@ -1,202 +1,116 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Navbar() {
-  return (
-    <nav className="navbar">
-      <div className="navbar-inner">
+const [menuOpen, setMenuOpen] = useState(false);
 
-        {/* Logo */}
-        <Link href="/" className="navbar-logo">
-          <div className="logo-box">G</div>
+return ( <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-info border-2"> <div className="container-fluid px-4 px-lg-5">
 
-          <div className="logo-text">
-            <div className="logo-title">
-              GLOBAL GAME JAM
-            </div>
-
-            <div className="logo-subtitle">
-              TOKYO HUB // 2026. 1
-            </div>
-          </div>
-        </Link>
-
-        {/* Menu */}
-        <div className="navbar-menu">
-          <Link href="#about">About</Link>
-          <Link href="#schedule">Schedule</Link>
-          <Link href="#prizes">Prizes</Link>
-          <Link href="#faq">FAQ</Link>
-
-          <Link href="#register" className="register-button">
-            REGISTER NOW
-          </Link>
-        </div>
-
+    
+    <Link
+      href="/"
+      className="navbar-brand d-flex align-items-center gap-3"
+    >
+     
+      <div
+        className="d-flex align-items-center justify-content-center border border-info text-info fw-bold"
+        style={{
+          width: "38px",
+          height: "38px",
+          fontSize: "18px",
+          boxShadow: "0 0 12px rgba(13, 202, 240, 0.35)",
+        }}
+      >
+        G
       </div>
 
-      <style jsx>{`
-        .navbar {
-          width: 100%;
-          height: 68px;
-          background: #05050b;
-          border: 2px solid #009cff;
-          box-sizing: border-box;
-          position: relative;
-          z-index: 100;
-        }
+    
+      <div className="d-flex flex-column">
+        <span
+          className="fw-bold text-white"
+          style={{
+            fontSize: "14px",
+            letterSpacing: "1px",
+          }}
+        >
+          GLOBAL GAME JAM 2026
+        </span>
 
-        .navbar-inner {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 48px;
-          box-sizing: border-box;
-        }
+        <small
+          className="text-info font-monospace"
+          style={{
+            fontSize: "9px",
+            letterSpacing: "1px",
+          }}
+        >
+          TNI GAMEJAM
+        </small>
+      </div>
+    </Link>
 
-        /* =========================
-           LOGO
-        ========================= */
+    {/* Mobile Button */}
+    <button
+      type="button"
+      className="navbar-toggler border border-info"
+      onClick={() => setMenuOpen(!menuOpen)}
+      aria-label="Toggle navigation"
+      aria-expanded={menuOpen}
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
 
-        .navbar-logo {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          text-decoration: none;
-        }
+    {/* Menu */}
+    <div
+      className={`${
+        menuOpen ? "d-flex" : "d-none"
+      } d-lg-flex flex-column flex-lg-row justify-content-lg-end align-items-lg-center w-100`}
+    >
+      <div className="navbar-nav align-items-lg-center gap-lg-2 gap-xl-4">
 
-        .logo-box {
-          width: 22px;
-          height: 22px;
+        {/* About */}
+        <Link
+          href="#about"
+          className="nav-link text-secondary px-3 py-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          ABOUT
+        </Link>
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        {/* Schedule */}
+        <Link
+          href="#schedule"
+          className="nav-link text-secondary px-3 py-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          SCHEDULE
+        </Link>
 
-          border: 1px solid #ff00ff;
-          color: white;
+        {/* Prizes */}
+        <Link
+          href="#prizes"
+          className="nav-link text-secondary px-3 py-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          PRIZES
+        </Link>
 
-          font-family: Arial, sans-serif;
-          font-size: 13px;
-          font-weight: bold;
+        {/* Register */}
+        <Link
+          href="#register"
+          className="btn btn-outline-info px-4 py-2 ms-lg-2"
+          onClick={() => setMenuOpen(false)}
+        >
+          REGISTER NOW
+        </Link>
 
-          box-shadow:
-            0 0 6px rgba(255, 0, 255, 0.5);
-        }
+      </div>
+    </div>
 
-        .logo-text {
-          display: flex;
-          flex-direction: column;
-          line-height: 1;
-        }
+  </div>
+</nav>
 
-        .logo-title {
-          color: white;
-          font-family: Arial, sans-serif;
-          font-size: 13px;
-          font-weight: 800;
-          letter-spacing: 0.5px;
-        }
 
-        .logo-subtitle {
-          margin-top: 3px;
-          color: #00d9ff;
-          font-family: monospace;
-          font-size: 7px;
-          letter-spacing: 0.5px;
-        }
-
-        /* =========================
-           MENU
-        ========================= */
-
-        .navbar-menu {
-          display: flex;
-          align-items: center;
-          gap: 30px;
-        }
-
-        .navbar-menu a {
-          color: #aaa;
-          text-decoration: none;
-
-          font-family: monospace;
-          font-size: 11px;
-
-          transition: 0.2s ease;
-        }
-
-        .navbar-menu a:hover {
-          color: #00eaff;
-          text-shadow:
-            0 0 5px rgba(0, 234, 255, 0.7);
-        }
-
-        /* =========================
-           REGISTER BUTTON
-        ========================= */
-
-        .register-button {
-          min-width: 120px;
-          height: 30px;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          margin-left: 0px;
-
-          border: 1px solid #00eaff;
-          color: #00eaff !important;
-
-          font-family: Arial, sans-serif !important;
-          font-size: 10px !important;
-          font-weight: bold;
-
-          box-shadow:
-            0 0 8px rgba(0, 234, 255, 0.15);
-
-          transition: 0.2s ease !important;
-        }
-
-        .register-button:hover {
-          background: rgba(0, 234, 255, 0.08);
-          box-shadow:
-            0 0 12px rgba(0, 234, 255, 0.4);
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 768px) {
-
-          .navbar {
-            height: auto;
-            min-height: 68px;
-          }
-
-          .navbar-inner {
-            padding: 12px 18px;
-            flex-direction: column;
-            gap: 15px;
-          }
-
-          .navbar-menu {
-            width: 100%;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-          }
-
-          .register-button {
-            min-width: 110px;
-          }
-        }
-      `}</style>
-    </nav>
-  );
+);
 }

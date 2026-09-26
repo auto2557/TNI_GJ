@@ -2,44 +2,26 @@ import Navbar from "./lib/Navbar";
 
 export default function Home() {
   return (
-    <main className="page">
+    <main className="min-vh-100 bg-dark text-white">
 
-      <Navbar />
+      {/* Hero */}
+      <section className="container py-5">
+        <div className="text-center py-5">
 
-      <section className="hero">
-        <h1>GLOBAL GAME JAM</h1>
-        <p>
-          Create. Collaborate. Play.
-        </p>
+          <h1 className="display-4 fw-bold">
+            GLOBAL GAME JAM
+          </h1>
+
+          <p className="lead text-info mt-3">
+            Create. Collaborate. Play.
+          </p>
+
+          <button className="btn btn-outline-info mt-3 px-4">
+            GET STARTED
+          </button>
+
+        </div>
       </section>
-
-      <style jsx>{`
-        .page {
-          min-height: 100vh;
-          background: #05050b;
-          color: white;
-        }
-
-        .hero {
-          min-height: 500px;
-
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-
-          text-align: center;
-        }
-
-        .hero h1 {
-          font-size: 50px;
-          margin: 0;
-        }
-
-        .hero p {
-          color: #00d9ff;
-        }
-      `}</style>
 
     </main>
   );
