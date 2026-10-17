@@ -1,145 +1,139 @@
+
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Home() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
 
-useEffect(() => {
-  const elements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+          }
+        });
+      },
+      {
+        threshold: 0.01,
+      }
+    );
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        } else {
-          entry.target.classList.remove("show");
-        }
-      });
-    },
-    {
-      threshold: 0.01,
-    }
-  );
+    elements.forEach((element) => observer.observe(element));
 
-  elements.forEach((element) => observer.observe(element));
-
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <main>
-
       {/* ================= HERO ================= */}
       <section id="home" className="hero-section">
-
         <div className="hero-grid"></div>
         <div className="hero-orb orb-pink"></div>
         <div className="hero-orb orb-cyan"></div>
 
         <div className="hero-content">
-
           <p className="badge-text reveal">
-            ★ REGISTRATION IS LIVE UNTIL JAN 20 ★
+            ★ TNI HOSTED GAME JAM // REGISTRATION ★
           </p>
 
           <p className="system-text reveal delay-1">
-            SYSTEM // TNI GAMEJAM 2026
+            HOSTED BY // THAI-NICHI INSTITUTE OF TECHNOLOGY
           </p>
 
           <h1 className="reveal delay-1">
             CREATE THE
             <br />
-            <span >FUTURE</span> OF <b>PLAY</b>
+            <span>FUTURE</span> OF <b>PLAY</b>
           </h1>
 
           <p className="hero-text reveal delay-2">
-            Join developers, artists, designers and creators
-            for 48 hours of pure game development.
-            Build something strange. Build something memorable.
+            Join students, developers, artists, designers, and creators
+            for a game development event hosted by Thai-Nichi Institute
+            of Technology. Collaborate, experiment, and turn your ideas
+            into a playable game.
           </p>
 
           <div className="hero-buttons reveal delay-3">
-
-            <button className="btn-main">
+            {/* REGISTER -> LOGIN */}
+            <Link
+              href="/login"
+              className="btn-main text-decoration-none"
+            >
               SECURE CHIP // REGISTER
-            </button>
+            </Link>
 
-            <button className="btn-sub">
-              JOIN DISCORD SERVER
-            </button>
-
+            <Link
+              href="/#about"
+              className="btn-sub text-decoration-none"
+            >
+              ABOUT TNI GAMEJAM
+            </Link>
           </div>
 
           <div className="event-info reveal delay-4">
-
             <div>
-              <small>COORDINATES</small>
-              <strong>TOKYO HUB & ONLINE</strong>
+              <small>HOST INSTITUTION</small>
+              <strong>THAI-NICHI INSTITUTE OF TECHNOLOGY</strong>
             </div>
 
             <div>
-              <small>TIMEFRAME</small>
-              <strong>JAN 23 — 25, 2026</strong>
+              <small>EVENT</small>
+              <strong>TNI GAMEJAM 2026</strong>
             </div>
 
             <div>
-              <small>STATUS</small>
+              <small>EVENT DETAILS</small>
               <strong className="online-text">
-                ● KICKOFF FRIDAY
+                ● SCHEDULE TO BE ANNOUNCED
               </strong>
             </div>
-
           </div>
 
           <div className="scroll-hint reveal delay-4 mt-5">
             SCROLL TO EXPLORE ↓
           </div>
-
         </div>
       </section>
 
-
       {/* ================= ABOUT ================= */}
       <section id="about" className="about-section">
-
         <div className="section-orb cyan-orb"></div>
 
         <div className="container">
           <div className="row align-items-center">
-
             {/* CAROUSEL */}
             <div className="col-lg-5 mb-5 mb-lg-0 reveal">
-
               <div
                 id="gameJamCarousel"
                 className="carousel slide about-img"
                 data-bs-ride="carousel"
               >
-
                 <div className="carousel-inner">
-
                   <div className="carousel-item active">
                     <img
-                      src="/img/ออตู้ตตตต.png"
-                      alt="Game Jam 1"
+                      src="/img/tni2.jpg"
+                      alt="TNI GameJam event photo 1"
                     />
                   </div>
 
                   <div className="carousel-item">
                     <img
-                      src="/img/กั้งนอน.jpg"
-                      alt="Game Jam 2"
+                      src="/img/tni1.png"
+                      alt="TNI GameJam event photo 2"
                     />
                   </div>
 
                   <div className="carousel-item">
                     <img
-                      src="/img/Watit, help !.png"
-                      alt="Game Jam 3"
+                      src="/img/tni3.jpg"
+                      alt="TNI GameJam event photo 3"
                     />
                   </div>
-
                 </div>
 
                 <button
@@ -147,6 +141,7 @@ useEffect(() => {
                   type="button"
                   data-bs-target="#gameJamCarousel"
                   data-bs-slide="prev"
+                  aria-label="Previous image"
                 >
                   <span className="carousel-control-prev-icon"></span>
                 </button>
@@ -156,6 +151,7 @@ useEffect(() => {
                   type="button"
                   data-bs-target="#gameJamCarousel"
                   data-bs-slide="next"
+                  aria-label="Next image"
                 >
                   <span className="carousel-control-next-icon"></span>
                 </button>
@@ -163,220 +159,163 @@ useEffect(() => {
                 <div className="image-tag">
                   TNI // GAMEJAM
                 </div>
-
               </div>
-
             </div>
-
 
             {/* CONTENT */}
             <div className="col-lg-7">
-
               <div className="reveal delay-1">
-
                 <p className="section-label">
-                  WHAT IS A GAME JAM?
+                  ABOUT TNI GAMEJAM
                 </p>
 
                 <h2>
-                  BUILD.
+                  LEARN.
                   <br />
-                  <span>BREAK.</span>
+                  <span>CREATE.</span>
                   <br />
-                  REPEAT.
+                  COLLABORATE.
                 </h2>
 
                 <p className="description">
-                  A game jam is a hackathon focused on game development.
-                  You are challenged to plan, design, and program a video
-                  game from scratch within a tight deadline.
+                  TNI GameJam is a game development event hosted by Thai-Nichi
+                  Institute of Technology. It brings students and creators
+                  together to share ideas, develop skills, and build playable
+                  games in a collaborative environment.
                 </p>
-
               </div>
 
-
               <div className="about-item reveal delay-2">
-
                 <span>01</span>
 
                 <div>
-                  <h3>No Experience Required</h3>
-
+                  <h3>Hosted by TNI</h3>
                   <p>
-                    Whether you are an industry veteran or writing your
-                    very first line of code, game jams are a great place
-                    to learn and build fast.
+                    Thai-Nichi Institute of Technology provides a space for
+                    participants to explore game development and learn
+                    through hands-on creative work.
                   </p>
                 </div>
-
               </div>
 
-
               <div className="about-item reveal delay-3">
-
                 <span>02</span>
 
                 <div>
-                  <h3>Team Up or Go Solo</h3>
-
+                  <h3>Learn by Creating</h3>
                   <p>
-                    Bring your pre-made crew or join forces with other
-                    local creators.
+                    Plan, design, and develop a playable game while practicing
+                    problem-solving and teamwork.
                   </p>
                 </div>
-
               </div>
 
-
               <div className="about-item reveal delay-4">
-
                 <span>03</span>
 
                 <div>
-                  <h3>Global Playground</h3>
-
+                  <h3>A Community of Creators</h3>
                   <p>
-                    Participate alongside thousands of jammers around
-                    the world.
+                    Connect with fellow students, artists, programmers, and
+                    designers who share an interest in making games.
                   </p>
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
-
       {/* ================= SCHEDULE ================= */}
       <section id="schedule" className="schedule-section">
-
         <div className="container">
-
           <div className="section-title reveal">
-
             <p className="section-label">
-              MISSION MANIFEST
+              EVENT PROGRAM
             </p>
 
             <h2>
-              SCHEDULE
-              <span> & HONORS</span>
+              EVENT FLOW
+              <span> &amp; AWARDS</span>
             </h2>
 
             <p className="description">
-              48 hours. One theme. Infinite possibilities.
+              One event. Fresh ideas. A chance to make something new.
             </p>
-
           </div>
 
-
           <div className="row g-4">
-
             {/* TIMELINE */}
             <div className="col-lg-6 reveal">
-
               <div className="info-card timeline-card">
+                <span className="card-number">01</span>
 
-                <span className="card-number">
-                  01
-                </span>
-
-                <h3>
-                  THE 48-HOUR PIPELINE
-                </h3>
-
+                <h3>THE GAMEJAM JOURNEY</h3>
 
                 <div className="timeline-item">
-
                   <div className="timeline-dot"></div>
 
                   <div>
                     <p className="pink">
-                      FRIDAY JAN 23 // 18:00
+                      PHASE 01 // OPENING
                     </p>
 
-                    <h4>
-                      Theme Reveal & Matchmaking
-                    </h4>
+                    <h4>Welcome &amp; Theme Reveal</h4>
 
                     <p>
-                      Local site doors open and secret theme
-                      is revealed.
+                      Meet fellow participants, learn the event theme,
+                      and start forming teams.
                     </p>
                   </div>
-
                 </div>
 
-
                 <div className="timeline-item">
-
                   <div className="timeline-dot"></div>
 
                   <div>
                     <p className="pink">
-                      SATURDAY JAN 24 // 14:00
+                      PHASE 02 // DEVELOPMENT
                     </p>
 
-                    <h4>
-                      Mid-way Playtest Check
-                    </h4>
+                    <h4>Game Development &amp; Playtesting</h4>
 
                     <p>
-                      In-progress builds checked with mentors
-                      and peers.
+                      Develop your game, collect feedback, and improve
+                      the experience with your team.
                     </p>
                   </div>
-
                 </div>
 
-
                 <div className="timeline-item">
-
                   <div className="timeline-dot"></div>
 
                   <div>
                     <p className="pink">
-                      SUNDAY JAN 25 // 15:00
+                      PHASE 03 // FINAL SHOWCASE
                     </p>
 
-                    <h4>
-                      Deadline & Submission
-                    </h4>
+                    <h4>Final Submission &amp; Showcase</h4>
 
-                    <p>
-                      Build compilation freezes.
-                    </p>
+                    <p>Submit your completed build and share your work
+                      with the TNI GameJam community.</p>
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
 
             {/* HONORS */}
             <div className="col-lg-6 reveal delay-2">
-
               <div className="info-card">
-
                 <span className="card-number pink-number">
                   02
                 </span>
 
-                <h3>
-                  HONORS & SWAG
-                </h3>
+                <h3>AWARDS &amp; RECOGNITION</h3>
 
                 <p>
-                  Community honors for achievements in
-                  game development.
+                  Recognizing creativity, memorable gameplay,
+                  and experimental ideas created by participants.
                 </p>
-
 
                 <div className="award">
                   <span>✦ </span>
@@ -397,63 +336,41 @@ useEffect(() => {
                   <span>✦ </span>
                   Every Single Jammer
                 </div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
       </section>
 
-
       {/* ================= PRIZES ================= */}
       <section id="prizes" className="prizes-section">
-
-
         <div className="container">
-
           <div className="section-title reveal">
-
             <p className="section-label">
-              CORE DIRECTORY
+              AWARD CATEGORIES
             </p>
 
-            <h2>
-              PRIZES
-            </h2>
+            <h2>AWARDS</h2>
 
             <p className="description">
-              Build something memorable.
-              Leave your mark.
+              Celebrate creativity, innovation, and the games
+              created at TNI GameJam.
             </p>
-
           </div>
 
-
           <div className="row g-4">
-
+            {/* PRIZE 1 */}
             <div className="col-lg-4 col-md-6 reveal">
-
               <div className="prize-card">
-
                 <div className="prize-top">
-                  <span>01 </span>
-                  <span>UNLOCKED</span>
+                  <span>01</span>
+                  <span>AWARD CATEGORY</span>
                 </div>
 
-                <div className="prize-icon">
-                  ★
-                </div>
+                <div className="prize-icon">★</div>
 
-                <h3>
-                  GRAND JURY
-                </h3>
-
-                <h4>
-                  CHAMPION
-                </h4>
+                <h3>GRAND JURY</h3>
+                <h4>CHAMPION</h4>
 
                 <p>
                   Awarded to the team that delivers
@@ -462,32 +379,21 @@ useEffect(() => {
                 </p>
 
                 <div className="prize-line"></div>
-
               </div>
-
             </div>
 
-
+            {/* PRIZE 2 */}
             <div className="col-lg-4 col-md-6 reveal delay-1">
-
               <div className="prize-card pink-card">
-
                 <div className="prize-top">
-                  <span>02 </span>
-                  <span>UNLOCKED</span>
+                  <span>02</span>
+                  <span>AWARD CATEGORY</span>
                 </div>
 
-                <div className="prize-icon">
-                  ◆
-                </div>
+                <div className="prize-icon">◆</div>
 
-                <h3>
-                  PURE
-                </h3>
-
-                <h4>
-                  NOSTALGIA
-                </h4>
+                <h3>PURE</h3>
+                <h4>NOSTALGIA</h4>
 
                 <p>
                   For games that successfully capture
@@ -495,32 +401,21 @@ useEffect(() => {
                 </p>
 
                 <div className="prize-line"></div>
-
               </div>
-
             </div>
 
-
+            {/* PRIZE 3 */}
             <div className="col-lg-4 col-md-6 reveal delay-2">
-
               <div className="prize-card">
-
                 <div className="prize-top">
-                  <span>03 </span>
-                  <span>UNLOCKED</span>
+                  <span>03</span>
+                  <span>AWARD CATEGORY</span>
                 </div>
 
-                <div className="prize-icon">
-                  ✦
-                </div>
+                <div className="prize-icon">✦</div>
 
-                <h3>
-                  INNOVATOR
-                </h3>
-
-                <h4>
-                  EXTRAORDINAIRE
-                </h4>
+                <h3>INNOVATOR</h3>
+                <h4>EXTRAORDINAIRE</h4>
 
                 <p>
                   Celebrating unusual ideas,
@@ -529,32 +424,24 @@ useEffect(() => {
                 </p>
 
                 <div className="prize-line"></div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* ================= REGISTER ================= */}
       <section id="register" className="register-section">
-
         <div className="register-grid"></div>
         <div className="register-orb"></div>
 
         <div className="register-content reveal">
-
           <p className="section-label">
-            READY PLAYER ONE
+            HOSTED BY TNI
           </p>
 
           <span className="register-small">
-            YOUR NEXT BUILD STARTS HERE
+            YOUR IDEA STARTS HERE
           </span>
 
           <h2>
@@ -566,96 +453,61 @@ useEffect(() => {
           </h2>
 
           <p>
-            Don't wait for the perfect idea.
-            Make something first.
+            Join a game development event hosted by Thai-Nichi
+            Institute of Technology. Create, collaborate, and share your idea.
           </p>
 
-          <button className="btn-main">
+          {/* REGISTER -> LOGIN */}
+          <Link
+            href="/login"
+            className="btn-main text-decoration-none"
+          >
             REGISTER NOW →
-          </button>
-
+          </Link>
         </div>
-
       </section>
-
 
       {/* ================= FOOTER ================= */}
       <footer className="footer">
-
         <div className="footer-grid"></div>
 
         <div className="container">
-
           <div className="footer-top">
-
             <div className="footer-brand reveal">
-
-              <div className="footer-logo">
-                G
-              </div>
+              <div className="footer-logo">G</div>
 
               <div>
-                <h3>
-                  GLOBAL GAME JAM 2026
-                </h3>
-
-                <p>
-                  TNI GAMEJAM
-                </p>
+                <h3>GLOBAL GAME JAM 2026</h3>
+                <p>TNI GAMEJAM</p>
               </div>
-
             </div>
-
 
             <div className="footer-links reveal delay-1">
-
-              <a href="#home">HOME</a>
-              <a href="#about">ABOUT</a>
-              <a href="#schedule">SCHEDULE</a>
-              <a href="#prizes">PRIZES</a>
-              <a href="#register">REGISTER</a>
-
+              <Link href="/#home">HOME</Link>
+              <Link href="/#about">ABOUT</Link>
+              <Link href="/#schedule">SCHEDULE</Link>
+              <Link href="/#prizes">AWARDS</Link>
+              <Link href="/login">REGISTER</Link>
             </div>
 
-
             <div className="footer-status reveal delay-2">
-
               <span className="status-dot"></span>
 
               <div>
-                <small>
-                  SYSTEM STATUS
-                </small>
-
-                <strong>
-                  ONLINE
-                </strong>
+                <small>SYSTEM STATUS</small>
+                <strong>ONLINE</strong>
               </div>
-
             </div>
-
           </div>
-
 
           <div className="footer-line"></div>
 
-
           <div className="footer-bottom">
-
-            <p>
-              © 2026 GLOBAL GAME JAM INC.
-            </p>
-
-            <p>
-              TNI GAMEJAM // CREATE. PLAY. REPEAT.
-            </p>
-
+            <p>TNI GAMEJAM 2026 · EVENT HOST: THAI-NICHI INSTITUTE OF TECHNOLOGY</p>
+            <p>HOSTED BY THAI-NICHI INSTITUTE OF TECHNOLOGY // CREATE. PLAY. REPEAT.</p>
           </div>
-
         </div>
-
       </footer>
-
     </main>
   );
 }
