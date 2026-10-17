@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -6,17 +7,18 @@ import { useState } from "react";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-info border-2 py-3">
-
       <div className="container-fluid px-4 px-lg-5">
 
         {/* LOGO */}
         <Link
           href="/"
-          className="navbar-brand d-flex align-items-center gap-3"
+          className="navbar-brand d-flex align-items-center gap-3 me-auto"
+          onClick={closeMenu}
         >
-
           <div
             className="d-flex align-items-center justify-content-center border border-info text-info fw-bold"
             style={{
@@ -30,7 +32,6 @@ export default function Navbar() {
           </div>
 
           <div className="d-flex flex-column">
-
             <span
               className="fw-bold text-white"
               style={{
@@ -51,98 +52,70 @@ export default function Navbar() {
             >
               TNI GAMEJAM
             </small>
-
           </div>
-
         </Link>
 
-
-        {/* MOBILE BUTTON */}
+        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
-          className="navbar-toggler border border-info p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
+          className="navbar-toggler border border-info rounded-0 p-2"
+          onClick={() => setMenuOpen((open) => !open)}
           aria-label="Toggle navigation"
           aria-expanded={menuOpen}
+          aria-controls="mainNavbar"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" />
         </button>
 
-
-        {/* MENU */}
+        {/* NAVIGATION MENU */}
         <div
-          className={`${
-            menuOpen ? "d-flex" : "d-none"
-          } d-lg-flex flex-column flex-lg-row justify-content-lg-end align-items-lg-center w-100`}
+          id="mainNavbar"
+          className={`collapse navbar-collapse ${
+            menuOpen ? "show" : ""
+          }`}
         >
-
-          <div className="navbar-nav align-items-lg-center gap-lg-3 gap-xl-4">
+          <div className="navbar-nav ms-lg-auto align-items-lg-center gap-lg-3 gap-xl-4 pt-3 pt-lg-0">
 
             {/* ABOUT */}
             <Link
-              href="#about"
-              className="nav-link text-secondary px-3 py-2"
-              style={{
-                fontSize: "16px",
-                fontWeight: "600",
-                letterSpacing: "1px",
-              }}
-              onClick={() => setMenuOpen(false)}
+              href="/#about"
+              className="nav-link text-secondary px-3 py-2 fw-semibold"
+              onClick={closeMenu}
             >
               ABOUT
             </Link>
 
-
             {/* SCHEDULE */}
             <Link
-              href="#schedule"
-              className="nav-link text-secondary px-3 py-2"
-              style={{
-                fontSize: "16px",
-                fontWeight: "600",
-                letterSpacing: "1px",
-              }}
-              onClick={() => setMenuOpen(false)}
+              href="/#schedule"
+              className="nav-link text-secondary px-3 py-2 fw-semibold"
+              onClick={closeMenu}
             >
               SCHEDULE
             </Link>
 
-
             {/* PRIZES */}
             <Link
-              href="#prizes"
-              className="nav-link text-secondary px-3 py-2"
-              style={{
-                fontSize: "16px",
-                fontWeight: "600",
-                letterSpacing: "1px",
-              }}
-              onClick={() => setMenuOpen(false)}
+              href="/#prizes"
+              className="nav-link text-secondary px-3 py-2 fw-semibold"
+              onClick={closeMenu}
             >
               PRIZES
             </Link>
 
-
-            {/* REGISTER */}
+            {/* REGISTER -> LOGIN */}
             <Link
-              href="#register"
-              className="btn btn-outline-info px-4 py-2 ms-lg-2"
-              style={{
-                fontSize: "15px",
-                fontWeight: "bold",
-                letterSpacing: "1px",
-              }}
-              onClick={() => setMenuOpen(false)}
+              href="/login"
+              className="btn btn-info text-dark rounded-0 px-4 py-2 ms-lg-2 fw-bold"
+              onClick={closeMenu}
             >
-              REGISTER NOW
+              REGISTER NOW →
             </Link>
 
           </div>
-
         </div>
 
       </div>
-
     </nav>
   );
 }
