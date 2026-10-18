@@ -1,0 +1,24 @@
+{
+  "name": "tni_gj",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/auto2557/TNI_GJ#readme",
+  "bugs": {
+    "url": "https://github.com/auto2557/TNI_GJ/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auto2557/TNI_GJ.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "express": "^5.2.1"
+  }
+}
